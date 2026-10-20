@@ -1,0 +1,27 @@
+LAR DE MARIA — PÁGINAS SEPARADAS
+
+Extraia o ZIP e abra a pasta no VS Code. Use a extensão Live Server para abrir index.html.
+
+O menu agora abre arquivos HTML separados. O CSS é compartilhado. Para editar Sobre, altere sobre.html; Como ajudar, ajudar.html; visitas e contato, agendar.html.
+
+Login e cadastro mantêm a integração Firebase existente. As tags HTML indevidas foram removidas de script.js. A autenticação depende de internet e da configuração do Firebase. Não foram criadas contas de teste nem alteradas configurações ou regras do Firebase.
+
+O agendamento continua com o conteúdo original; esta alteração não implementa o envio de agendamentos.
+
+Para atualizar o GitHub, envie os arquivos extraídos na raiz do repositório usando Add file > Upload files, substituindo os arquivos de mesmo nome. O ZIP não deve ser enviado como substituto dos arquivos.
+
+CONTATO
+O botão WhatsApp em agendar.html abre o número +55 81 99565-2416 com uma mensagem inicial. Não há botão de Instagram.
+
+GOOGLE AGENDA
+Integração futura, ainda não implementada.
+
+
+APLICATIVO (PWA)
+O site agora é instalável como aplicativo. Novos arquivos: manifest.json, sw.js, pwa.js e os arquivos icone-*.png e apple-touch-icon.png.
+- Android (Chrome): aparece o botão "Instalar app" na parte de baixo da tela.
+- iPhone (Safari): Compartilhar > Adicionar à Tela de Início.
+- Precisa estar em HTTPS (GitHub Pages já serve assim). Pelo Live Server (localhost) também funciona.
+- Ao publicar alterações, mude VERSAO em sw.js (ex.: "v2") para os celulares atualizarem o cache.
+- Login e cadastro (Firebase) continuam exigindo internet.
+- Para trocar o ícone, substitua os PNGs dos arquivos icone-*.png e apple-touch-icon.png mantendo os nomes e tamanhos.

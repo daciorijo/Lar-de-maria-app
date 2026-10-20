@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre | Lar de Maria</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FF6B53">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Lar de Maria">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="icone-192.png">
+</head>
+<body>
+
+    <header id="topo">
+        <div class="logo">
+            <span class="coracao">❤️</span>
+            <strong>Lar de Maria</strong>
+        </div>
+        <label for="check-modal" class="btn-coral-nav">Entrar / Cadastrar</label>
+    </header>
+
+    <nav id="menu">
+        <a href="index.html" class="item-menu">Início</a>
+        <a href="sobre.html" class="item-menu active" aria-current="page">Sobre</a>
+        <a href="acolhimento.html" class="item-menu">Acolhimento</a>
+        <a href="ajudar.html" class="item-menu">Como ajudar</a>
+        <a href="agendar.html" class="item-menu">Contato</a>
+    </nav>
+
+    <main id="conteudo">
+
+        <section id="sobre" class="pagina">
+            <div class="tag-sub">✦ NOSSA TRAJETÓRIA</div>
+            <h1 class="titulo-principal">Nossa <span class="destaque-coral">história</span></h1>
+            <p class="descricao">O Lar de Maria foi fundado por Maria Salete Rodrigues Santana e, ao longo de mais de três décadas, ampliou sua estrutura no bairro de Jardim Massangana.</p>
+            <div class="card-foto">
+                <div class="badge-foto">Atividade cultural</div>
+            </div>
+        </section>
+
+    </main>
+
+    <input type="checkbox" id="check-modal" style="display: none;">
+    <div id="janela-modal">
+        <div class="conteudo-modal">
+            
+            <input type="radio" name="aba-modal" id="tab-login" checked style="display: none;">
+            <input type="radio" name="aba-modal" id="tab-cadastro" style="display: none;">
+
+            <div class="modal-abas">
+                <label for="tab-login" class="aba-item label-login">Entrar</label>
+                <label for="tab-cadastro" class="aba-item label-cadastro">Cadastrar</label>
+            </div>
+
+            <div class="form-secao form-login">
+                <h2>Acesse sua conta</h2>
+                <p>Digite seus dados para continuar</p>
+                <input id="loginemail" type="email" placeholder="Digite seu e-mail" class="campo-input">
+                <input id="loginsenha" type="password" placeholder="Digite sua senha" class="campo-input">
+                <button type="button" class="btn-coral-block" onclick="fazerlogin()">Entrar</button>
+            </div>
+
+            <div class="form-secao form-cadastro">
+                <h2>Crie sua conta</h2>
+                <p>Preencha os dados abaixo</p>
+                <input id="cadastronome" type="text" placeholder="Nome completo" class="campo-input">
+                <input id="cadastroemail" type="email" placeholder="Digite seu e-mail" class="campo-input">
+                <input id="cadastrosenha" type="password" placeholder="Crie uma senha" class="campo-input">
+                <button type="button" class="btn-coral-block" onclick="confirmarcadastro()">Cadastrar</button>
+            </div>
+
+            <label for="check-modal" class="btn-fechar">Fechar</label>
+
+            <script type="module" src="script.js"></script>
+        </div>
+    </div>
+
+    <script src="pwa.js" defer></script>
+</body>
+</html>
