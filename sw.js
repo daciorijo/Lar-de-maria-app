@@ -1,9 +1,9 @@
 // Service worker do Lar de Maria. Mude a VERSAO sempre que publicar alterações.
-const VERSAO = "v2";
+const VERSAO = "v3";
 const CACHE = `lar-de-maria-${VERSAO}`;
 const ARQUIVOS = [
     "./", "index.html", "sobre.html", "acolhimento.html", "ajudar.html", "apadrinhar.html", "agendar.html",
-    "estilo.css", "script.js", "contatos.js", "pwa.js", "manifest.json",
+    "portal.js", "firebase-app.js", "admin.js", "admin.html", "estilo.css", "script.js", "contatos.js", "pwa.js", "manifest.json",
     "icone-192.png", "icone-512.png", "apple-touch-icon.png"
 ];
 
@@ -22,6 +22,7 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
     const req = e.request;
     if (req.method !== "GET") return;
+    if (new URL(req.url).origin !== self.location.origin) return;
     const url = new URL(req.url);
 
     // Nunca intercepta chamadas dinâmicas do Firebase (login, banco de dados)
