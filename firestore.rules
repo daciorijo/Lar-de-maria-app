@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+ function signed(){return request.auth != null;}
+ function admin(){return signed() && exists(/databases/$(database)/documents/administradores/$(request.auth.uid)) && get(/databases/$(database)/documents/administradores/$(request.auth.uid)).data.ativo == true;}
+ function allowed(){return signed() && exists(/databases/$(database)/documents/usuarios/$(request.auth.uid)) && get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.get('bloqueado',false) == false;}
+ match /administradores/{uid} { allow get: if signed() && request.auth.uid == uid; allow list,write: if false; }
+ match /usuarios/{uid} {
+ allow get: if admin() || (signed() && request.auth.uid == uid);
+ allow list: if admin();
+ allow create: if signed() && request.auth.uid == uid && request.resource.data.keys().hasOnly(['nome','email','criadoEm']) && request.resource.data.nome is string && request.resource.data.email == request.auth.token.email && request.resource.data.criadoEm == request.time;
+ allow update: if admin() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['bloqueado']) && request.resource.data.bloqueado is bool;
+ }
+ match /{tipo}/{id} {
+ allow read: if tipo in ['avisos','doacoes','institucional'];
+ allow create,update: if tipo in ['avisos','doacoes','institucional'] && admin() && request.resource.data.keys().hasOnly(['titulo','texto','atualizadoEm']) && request.resource.data.titulo is string && request.resource.data.titulo.size() <= 120 && request.resource.data.texto is string && request.resource.data.texto.size() <= 3000 && request.resource.data.atualizadoEm == request.time;
+ allow delete: if tipo in ['avisos','doacoes','institucional'] && admin();
+ allow read: if tipo in ['visitas','apadrinhamentos'] && (admin() || (signed() && resource.data.uid == request.auth.uid));
+ allow create: if tipo in ['visitas','apadrinhamentos'] && allowed() && request.resource.data.keys().hasOnly(['uid','email','texto','data','status','criadoEm']) && request.resource.data.uid == request.auth.uid && request.resource.data.email == request.auth.token.email && request.resource.data.status == 'pendente' && request.resource.data.criadoEm == request.time && request.resource.data.texto is string && request.resource.data.texto.size() <= 500 && request.resource.data.data is string && request.resource.data.data.size() <= 10;
+ allow update: if tipo in ['visitas','apadrinhamentos'] && admin() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','atualizadoEm']) && request.resource.data.status in ['aprovado','recusado','cancelado'] && request.resource.data.atualizadoEm == request.time;
+ }
+ }
+}
