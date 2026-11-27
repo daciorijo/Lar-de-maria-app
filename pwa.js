@@ -41,3 +41,22 @@ if (ios && !jaInstalado) {
         alert("Para instalar: toque em Compartilhar (□↑) e depois em “Adicionar à Tela de Início”.");
     }));
 }
+
+
+// Compartilhamento do aplicativo, disponível sem login em todas as páginas.
+(() => {
+    const topo = document.getElementById("topo");
+    if (!topo || document.getElementById("btn-compartilhar-app")) return;
+    const url = new URL("index.html", window.location.href).href;
+    const mensagem = "Conheça o Lar de Maria e descubra como ajudar! ❤️";
+    const whatsapp = "https://wa.me/?text=" + encodeURIComponent(mensagem + "\n" + url);
+    const botao = document.createElement("a");
+    botao.id = "btn-compartilhar-app";
+    botao.href = whatsapp;
+    botao.setAttribute("aria-label", "Compartilhar aplicativo pelo WhatsApp");
+    botao.style.cssText = "display:flex;align-items:center;justify-content:center;gap:8px;flex:1 0 100%;min-height:44px;padding:10px 16px;border-radius:20px;background:#274D3D;color:#fff;text-decoration:none;font:700 14px 'Plus Jakarta Sans',sans-serif;text-align:center";
+    botao.textContent = "↗ Compartilhar app no WhatsApp";
+    topo.style.flexWrap = "wrap";
+    topo.style.rowGap = "10px";
+    topo.appendChild(botao);
+})();
