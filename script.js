@@ -1,5 +1,4 @@
-import { initializeApp } from
-                    "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import { auth, db as banco } from "./firebase-app.js";
 
                 import { 
                     getAuth, 
@@ -8,23 +7,12 @@ import { initializeApp } from
                     onAuthStateChanged, 
                     signOut, 
                     deleteUser 
-                } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+                } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
 
                 import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from
-                    "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+                    "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js";
 
-                const firebaseConfig = {
-                    apiKey: "AIzaSyDrLCoUhezEKy6qtSCTSa25AxyStKtmw8M",
-                    authDomain: "lar-de-maria-f2c45.firebaseapp.com",
-                    projectId: "lar-de-maria-f2c45",
-                    storageBucket: "lar-de-maria-f2c45.firebasestorage.app",
-                    messagingSenderId: "839400810340",
-                    appId: "1:839400810340:web:f601ba799d518e5292fc71"
-                };
-
-                const app = initializeApp(firebaseConfig);
-                const auth = getAuth(app);
-                const banco = getFirestore(app);
+                
 
                 function exibirAlertaCustom(mensagem) {
                     let dialog = document.getElementById("modal-alerta-custom");
