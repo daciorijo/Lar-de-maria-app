@@ -1,5 +1,5 @@
 // Service worker do Lar de Maria. Mude a VERSAO sempre que publicar alterações.
-const VERSAO = "v1";
+const VERSAO = "v2";
 const CACHE = `lar-de-maria-${VERSAO}`;
 const ARQUIVOS = [
     "./", "index.html", "sobre.html", "acolhimento.html", "ajudar.html", "apadrinhar.html", "agendar.html",
