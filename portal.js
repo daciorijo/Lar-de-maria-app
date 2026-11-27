@@ -1,6 +1,6 @@
 import {auth,db} from "./firebase-app.js";
-import {onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-import {collection,doc,getDocFromServer,getDocs,addDoc,serverTimestamp,query,where} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+import {onAuthStateChanged} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+import {collection,doc,getDocFromServer,getDocs,addDoc,serverTimestamp,query,where} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js";
 const el=(tag,t)=>{const e=document.createElement(tag);e.textContent=t;return e;};
 const section=document.querySelector("main section");
 const tipo=section?.id==="agendar"?"visitas":section?.id==="apadrinhar"?"apadrinhamentos":null;
