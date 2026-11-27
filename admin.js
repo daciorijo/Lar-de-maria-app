@@ -1,6 +1,6 @@
 import {auth,db} from "./firebase-app.js";
-import {onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-import {collection,doc,getDocFromServer,getDocsFromServer,addDoc,updateDoc,deleteDoc,serverTimestamp} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+import {onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+import {collection,doc,getDocFromServer,getDocsFromServer,addDoc,updateDoc,deleteDoc,serverTimestamp} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js";
 const $=id=>document.getElementById(id), publicos=["doacoes","avisos","institucional"], tipos=["visitas","apadrinhamentos","usuarios",...publicos];let autorizado=false, edit=null, versao=0;
 function msg(t){$("estado").textContent=t;}
 function el(tag,t){const e=document.createElement(tag);e.textContent=t;return e;}
